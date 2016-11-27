@@ -1,0 +1,13 @@
+body {
+	padding-left: 200px;
+}
+#sidebar {
+	position: fixed;
+	width: 200px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: #0F0F0F;
+	color: #FFFFFF;
+	padding: 20px;
+}
