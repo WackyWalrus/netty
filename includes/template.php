@@ -15,8 +15,8 @@
 				<a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Events</a>
 				<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Find Friends</a>
 			<?php } else { ?>
-				<a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Login</a>
-				<a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
+				<a href="<?=$CONF['url'];?>login.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Login</a>
+				<a href="<?=$CONF['url'];?>register/"<?php if($_SERVER['SCRIPT_NAME'] === '/register.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
 			<?php } ?>
 		</div>
 
