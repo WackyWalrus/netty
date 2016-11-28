@@ -84,7 +84,7 @@ class Mysql {
 
 		$stmt->execute();
 
-		return $this->$pdo->lastInsertId();
+		return $this->pdo->lastInsertId();
 	}
 }
 
