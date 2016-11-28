@@ -11,6 +11,13 @@ body {
 	color: #FFFFFF;
 	padding: 20px;
 }
+#sidebar a {
+	display: block;
+}
+#sidebar a span {
+	font-size: 12px;
+	margin-right: 4px;
+}
 
 .heading {
 	overflow: auto;
