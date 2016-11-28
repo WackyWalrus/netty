@@ -9,10 +9,15 @@
 
 		<div id="sidebar">
 			<h2><?=$CONF['name'];?></h2>
-			<a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Newsfeed</a>
-			<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Messages</a>
-			<a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Events</a>
-			<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Find Friends</a>
+			<?php if($viewer) { ?>
+				<a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Newsfeed</a>
+				<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Messages</a>
+				<a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Events</a>
+				<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Find Friends</a>
+			<?php } else { ?>
+				<a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Login</a>
+				<a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
+			<?php } ?>
 		</div>
 
 		<div class="container-fluid">
