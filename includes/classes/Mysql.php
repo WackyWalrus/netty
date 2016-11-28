@@ -18,8 +18,6 @@ class Mysql {
 			return false;
 		}
 
-
-
 		if (count($args)) {
 			foreach($args as $key => $arr) {
 				if ($arr['type'] === 'int') {

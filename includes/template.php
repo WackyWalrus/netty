@@ -13,7 +13,20 @@
 		</div>
 
 		<div class="container-fluid">
-			<?=$content;?>
+			<div class="heading">
+				<?php if ($title !== undefined) { ?>
+					<h4><?=$title;?></h4>
+				<?php } ?>
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control" />
+					</div>
+					<input type="submit" value="Search" class="btn btn-default btn-success" />
+				</form>
+			</div>
+			<?php if ($content !== undefined) {
+				echo $content;
+			} ?>
 		</div>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
