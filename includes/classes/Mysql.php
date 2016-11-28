@@ -40,6 +40,52 @@ class Mysql {
 		}
 		return false;
 	}
+
+	function insert($values, $into) {
+		$query = "INSERT {$into} (";
+
+		$count = count($values);
+
+		$i = 0;
+		foreach ($values as $value) {
+			$i += 1;
+
+			$query .= $value['col'];
+
+			if ($i !== $count) {
+				$query .= ",";
+			}
+		}
+
+		$query .= ") VALUES (";
+
+		$i = 0;
+		foreach ($values as $value) {
+			$i += 1;
+
+			$query .= $value['name'];
+
+			if ($i !== $count) {
+				$query .= ",";
+			}
+		}
+
+		$query .= ")";
+
+		$stmt = $this->pdo->prepare($query);
+
+		foreach($values as $value) {
+			if ($value['type'] === 'int') {
+				$stmt->bindValue($value['name'], $value['val'], PDO::PARAM_INT);
+			} else {
+				$stmt->bindValue($value['name'], $value['val'], PDO::PARAM_STR);
+			}
+		}
+
+		$stmt->execute();
+
+		return $this->$pdo->lastInsertId();
+	}
 }
 
 
