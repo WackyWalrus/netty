@@ -47,7 +47,7 @@ class Mysql {
 		$count = count($values);
 
 		$i = 0;
-		foreach ($values as $value) {
+		foreach ($values as $key => $value) {
 			$i += 1;
 
 			$query .= $value['col'];
@@ -60,10 +60,10 @@ class Mysql {
 		$query .= ") VALUES (";
 
 		$i = 0;
-		foreach ($values as $value) {
+		foreach ($values as $key => $value) {
 			$i += 1;
 
-			$query .= $value['name'];
+			$query .= $key;
 
 			if ($i !== $count) {
 				$query .= ",";
@@ -74,11 +74,11 @@ class Mysql {
 
 		$stmt = $this->pdo->prepare($query);
 
-		foreach($values as $value) {
+		foreach($values as $key => $value) {
 			if ($value['type'] === 'int') {
-				$stmt->bindValue($value['name'], $value['val'], PDO::PARAM_INT);
+				$stmt->bindValue($key, $value['val'], PDO::PARAM_INT);
 			} else {
-				$stmt->bindValue($value['name'], $value['val'], PDO::PARAM_STR);
+				$stmt->bindValue($key, $value['val'], PDO::PARAM_STR);
 			}
 		}
 
