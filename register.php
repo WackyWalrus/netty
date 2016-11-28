@@ -7,7 +7,7 @@ $results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
 
 $content .= <<<HTML
 <div class="register-form">
-	<form>
+	<form action="{$CONF['url']}actions/register.php" method="post">
 		<div class="form-group">
 			Username
 			<input type="text" name="username" class="form-control" />
@@ -22,7 +22,7 @@ $content .= <<<HTML
 		</div>
 		<div class="form-group">
 			Repeat Password
-			<input type="passwword" name="pass2" class="form-control" />
+			<input type="password" name="pass2" class="form-control" />
 		</div>
 		<input type="submit" value="Register" class="btn btn-default btn-success" />
 	</form>

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Site config
 $CONF = array(
 	'name' => 'Netty',
