@@ -3,7 +3,7 @@
 $title = "Newsfeed";
 $content = '';
 
-$results = $pdo->run("SELECT * FROM posts LIMIT 10");
+$results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
 
 $content .= <<<HTML
 <div class="post-status">
@@ -16,20 +16,12 @@ $content .= <<<HTML
 </div>
 HTML;
 
+ob_start();
 foreach($results as $result) {
 	$user = new User($result['uid']);
-	$content .= '<div class="post">';
-		$content .= '<div class="post__user-info">';
-			$content .= '<img src="images/mike.jpeg" width="50" height="50" class="post__user-img img-circle" />';
-			$content .= '<div class="post__user-info__text">';
-				$content .= '<div class="post__user-info__name">' . $user->username . '</div>';
-				$content .= '<div class="post__user-info__datestamp">' . $result['datestamp'] . '</div>';
-			$content .= '</div>';
-		$content .= '</div>';
-		$content .= '<div class="post__content">' . $result['post'] . '</div>';
-		$content .= '<div class="post__options"><a href="#">Like</a> <a href="#">Comment</a> <a href="#">Share</a></div>';
-	$content .= '</div>';
+	include 'includes/post.php';
 }
+$content .= ob_get_clean();
 
 include 'includes/template.php';
 ?>

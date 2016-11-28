@@ -14,7 +14,6 @@ $SQL = array(
 	'db' => 'netty'
 );
 
-
 // Classes
 include "{$CONF['dir']}includes/classes/Mysql.php";
 $pdo = new Mysql($SQL['host'], $SQL['user'], $SQL['password'], $SQL['db']);
