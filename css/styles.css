@@ -1,0 +1,56 @@
+body {
+	padding-left: 200px;
+}
+#sidebar {
+	position: fixed;
+	width: 200px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	background: #0F0F0F;
+	color: #FFFFFF;
+	padding: 20px;
+}
+
+.heading {
+	overflow: auto;
+}
+.heading h4 {
+	float: left;
+}
+.heading form {
+	float: right;
+	overflow: auto;
+	margin-top: 10px;
+}
+.heading form .form-group {
+	float: left;
+	margin-right: 10px;
+}
+.heading form .btn {
+	float: right;
+}
+
+.post {
+	background: #F0F0F0;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+.post .post__user-info {
+	overflow: auto;
+	margin-bottom: 4px;
+}
+.post .post__user-img {
+	float: left;
+	margin-right: 10px;
+}
+.post .post__user-info__text {
+	float: left;
+}
+.post .post__content {
+	margin-bottom: 4px;
+}
+.post .post__options a {
+	margin-right: 5px;
+}
