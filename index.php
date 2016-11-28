@@ -5,6 +5,16 @@ $content = '';
 
 $results = $pdo->run("SELECT * FROM posts LIMIT 10");
 
+$content .= <<<HTML
+<div class="post-status">
+	<form>
+		<div class="form-group">
+			<input type="text" placeholder="Post status..." class="form-control" />
+		</div>
+		<input type="submit" value="Post" class="btn btn-default btn-success" />
+	</form>
+</div>
+HTML;
 
 foreach($results as $result) {
 	$user = new User($result['uid']);

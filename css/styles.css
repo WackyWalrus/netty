@@ -38,6 +38,10 @@ body {
 	float: right;
 }
 
+.post-status {
+	margin: 20px 0;
+}
+
 .post {
 	background: #F0F0F0;
 	padding: 10px;
