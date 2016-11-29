@@ -9,6 +9,7 @@ class User {
 			':id' => array ('val' => $id, 'type' => 'int')
 		));
 
+		$this->id = $id;
 		$this->username = $u[0]['username'];
 		$this->datestamp = $u[0]['datestamp'];
 
@@ -25,9 +26,13 @@ class User {
 	function friends() {
 		global $pdo;
 
-		$results = $pdo->run("SELECT user_a, user_b FROM users WHERE user_a = :id OR user_b = :id",
+		$results = $pdo->run("SELECT user_a, user_b FROM friendships WHERE user_a = :user_a OR user_b = :user_b",
 			array(
-				':id' => array(
+				':user_a' => array(
+					'val' => $this->id,
+					'type' => 'int'
+				),
+				':user_b' => array(
 					'val' => $this->id,
 					'type' => 'int'
 				)
