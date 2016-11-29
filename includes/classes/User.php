@@ -21,6 +21,30 @@ class User {
 	function verifyLogin($token) {
 		return password_verify($this->username . $this->datestamp, $token);
 	}
+
+	function friends() {
+		global $pdo;
+
+		$results = $pdo->run("SELECT user_a, user_b FROM users WHERE user_a = :id OR user_b = :id",
+			array(
+				':id' => array(
+					'val' => $this->id,
+					'type' => 'int'
+				)
+			)
+		);
+
+		$friends = array();
+		foreach ($results as $result) {
+			if ($result['user_a'] === $this->id) {
+				$friends[] = $result['user_b'];
+			} else {
+				$friends[] = $result['user_a'];
+			}
+		}
+
+		return $friends;
+	}
 }
 
 ?>
