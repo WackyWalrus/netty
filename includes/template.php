@@ -11,7 +11,7 @@
 			<h2><?=$CONF['name'];?></h2>
 			<?php if($viewer) { ?>
 				<a href="<?=$CONF['url'];?>profile/<?=$viewer->username;?>"><span class="glyphicon glyphicon-sunglasses"></span> Profile</a>
-				<a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Newsfeed</a>
+				<a href="<?=$CONF['url'];?>"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Newsfeed</a>
 				<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Messages</a>
 				<a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events</a>
 				<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Find Friends</a>
