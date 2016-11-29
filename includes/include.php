@@ -21,4 +21,11 @@ include "{$CONF['dir']}includes/classes/Mysql.php";
 $pdo = new Mysql($SQL['host'], $SQL['user'], $SQL['password'], $SQL['db']);
 include "{$CONF['dir']}includes/classes/User.php";
 
+if (isset($_SESSION['uid']) && isset($_SESSION['token'])) {
+	$viewer = new User($_SESSION['uid']);
+	if (!$viewer->verifyLogin($_SESSION['token'])) {
+		$viewer = false;
+	}
+}
+
 ?>

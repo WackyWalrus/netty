@@ -10,13 +10,22 @@
 		<div id="sidebar">
 			<h2><?=$CONF['name'];?></h2>
 			<?php if($viewer) { ?>
-				<a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Newsfeed</a>
-				<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Messages</a>
-				<a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>Events</a>
-				<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Find Friends</a>
+				<a href="<?=$CONF['url'];?>profile/<?=$viewer->username;?>"><span class="glyphicon glyphicon-sunglasses"></span> Profile</a>
+				<a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Newsfeed</a>
+				<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Messages</a>
+				<a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events</a>
+				<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Find Friends</a>
 			<?php } else { ?>
-				<a href="<?=$CONF['url'];?>login.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Login</a>
-				<a href="<?=$CONF['url'];?>register/"<?php if($_SERVER['SCRIPT_NAME'] === '/register.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
+				<form action="<?=$CONF['url'];?>actions/login.php" method="post">
+					<div class="form-group">
+						<input type="text" name="username" class="form-control" placeholder="Username" />
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="Password" />
+					</div>
+					<input type="submit" value="Login" class="btn btn-default btn-success" />
+					<a href="<?=$CONF['url'];?>register/"<?php if($_SERVER['SCRIPT_NAME'] === '/register.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
+				</form>
 			<?php } ?>
 		</div>
 

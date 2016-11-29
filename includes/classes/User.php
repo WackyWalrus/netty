@@ -17,6 +17,10 @@ class User {
 			':type' => array ('val' => 'user', 'type' => 'string')
 		));
 	}
+
+	function verifyLogin($token) {
+		return password_verify($this->username . $this->datestamp, $token);
+	}
 }
 
 ?>
