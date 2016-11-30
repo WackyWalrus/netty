@@ -64,3 +64,14 @@ body {
 .post .post__options a {
 	margin-right: 5px;
 }
+
+.profile {
+	overflow: auto;
+}
+.profile .profile__user-img {
+	float: left;
+	margin-right: 20px;
+}
+.profile .profile__user-info {
+	float: left;
+}

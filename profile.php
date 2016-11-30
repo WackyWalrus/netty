@@ -25,7 +25,17 @@ $content = <<<HTML
 	<img src="{$CONF['url']}images/mike.jpeg" width="150" height="150" class="profile__user-img img-circle" />
 	<div class="profile__user-info">
 		<h3>{$user->username}</h3>
-		<p>{$user->datestamp}</p>
+HTML;
+
+$content .= "<p>Joined " . Utils::EpochToDateTime($user->datestamp) . "</p>";
+
+if ($user->id !== $viewer->id) {
+	if (!in_array($user->id, $viewer->friends())) {
+		$content .= '<a href="#" class="btn btn-default">Add as Friend</a>';
+	}
+}
+
+$content .= <<<HTML
 	</div>
 </div>
 HTML;

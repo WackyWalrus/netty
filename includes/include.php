@@ -20,6 +20,7 @@ $SQL = array(
 include "{$CONF['dir']}includes/classes/Mysql.php";
 $pdo = new Mysql($SQL['host'], $SQL['user'], $SQL['password'], $SQL['db']);
 include "{$CONF['dir']}includes/classes/User.php";
+include "{$CONF['dir']}includes/classes/Utils.php";
 
 if (isset($_SESSION['uid']) && isset($_SESSION['token'])) {
 	$viewer = new User($_SESSION['uid']);
