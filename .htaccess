@@ -3,4 +3,5 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_URI} !-f
 RewriteRule ^profile/(.*)?$ /profile.php?username=$1 [NC,L]
+RewriteRule ^profile-img/(.*)?$ /profile-img.php?id=$1 [NC,L]
 RewriteRule ^(.*)/$ /$1.php
