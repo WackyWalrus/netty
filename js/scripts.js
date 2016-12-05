@@ -1,10 +1,11 @@
 var app = {};
 
-(function(app, $) {
+(function (app, $) {
+    'use strict';
 
-	app.init = function () {
-		console.log('test');
-	};
+    app.init = function () {
+        console.log('test');
+    };
 
 }(app, $));
 
