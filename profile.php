@@ -22,7 +22,7 @@ if (isset($checkUser) && !empty($checkUser)) {
 $title = $user->username;
 $content = <<<HTML
 <div class="profile">
-	<img src="{$CONF['url']}images/mike.jpeg" width="150" height="150" class="profile__user-img img-circle" />
+	<img src="{$user->picUrl}" width="150" height="150" class="profile__user-img img-circle" />
 	<div class="profile__user-info">
 		<h3>{$user->username}</h3>
 HTML;
