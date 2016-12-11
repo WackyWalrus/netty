@@ -29,7 +29,7 @@
 			<?php } ?>
 		</div>
 
-		<div class="container-fluid">
+		<div id="main" class="container-fluid">
 			<div class="heading">
 				<?php if ($title !== undefined) { ?>
 					<h4><?=$title;?></h4>
