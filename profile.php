@@ -1,9 +1,11 @@
 <?php include 'includes/include.php';
 
+$username = str_replace('/', '', $_GET['username']);
+
 $checkUser = $pdo->run("SELECT id FROM users WHERE username = :username",
 	array(
 		':username' => array(
-			'val' => $_GET['username'],
+			'val' => $username,
 			'type' => 'str'
 		)
 	)
@@ -19,7 +21,7 @@ if (isset($checkUser) && !empty($checkUser)) {
 	$title = "User not found";
 }
 
-$title = $user->username;
+$title = '';
 $content = <<<HTML
 <div class="profile">
 	<img src="{$user->picUrl}" width="150" height="150" class="profile__user-img img-circle" />
