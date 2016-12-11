@@ -15,6 +15,7 @@ class User {
 		$this->datestamp = $u[0]['datestamp'];
 
 		$this->picUrl = "{$CONF['url']}profile-img/{$this->id}/";
+		$this->url = "{$CONF['url']}profile/{$this->username}/";
 
 		$d = $pdo->run("SELECT * FROM data WHERE d_id = :d_id AND type = :type", array(
 			':d_id' => array ('val' => $id, 'type' => 'int'),
