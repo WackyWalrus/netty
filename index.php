@@ -9,7 +9,7 @@ $content .= <<<HTML
 <div class="post-status">
 	<form>
 		<div class="form-group">
-			<input type="text" placeholder="Post status..." class="form-control" />
+			<textarea placeholder="Post status..." class="form-control"></textarea>
 		</div>
 		<input type="submit" value="Post" class="btn btn-default btn-success" />
 	</form>

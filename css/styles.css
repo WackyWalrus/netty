@@ -40,6 +40,9 @@ body {
 .post-status {
 	margin: 20px 0;
 }
+.post-status textarea {
+	max-height: 35px;
+}
 
 .post {
 	background: #F0F0F0;
