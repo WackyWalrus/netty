@@ -4,13 +4,25 @@ class Utils {
 
 	function goodVariable($variable) {
 		if ($variable !== null || $variable !== undefined) {
-			if (gettype($variable) === 'array') {
-				if (!empty($variable) &&
-						count($variable) > 0) {
-					return true;
+			$type = getType($variable);
+			if ($type !== null &&
+					$type !== undefined) {
+				if ($type === 'array') {
+					if (!empty($variable) &&
+							count($variable) !== -1) {
+						return true;
+					}
+				} elseif($type === 'object') {
+					$cast = (array)$variable;
+					if (!empty($cast) &&
+							count($cast) !== -1) {
+						return true;
+					}
+				} else {
+					if (count($variable) !== -1) {
+						return true;
+					}
 				}
-			} else {
-				return true;
 			}
 		}
 		return false;
