@@ -46,10 +46,8 @@ class User {
 
 		$friends = array();
 		foreach ($results as $result) {
-			if ($result['user_a'] !== null &&
-					$result['user_a'] !== undefined &&
-					$result['user_b'] !== null &&
-					$result['user_b'] !== undefined) {
+			if (Utils::goodVariable($result['user_a']) &&
+					Utils::goodVariable($result['user_b'])) {
 				if ($result['user_a'] === $this->id) {
 					$friends[] = $result['user_b'];
 				} else {
