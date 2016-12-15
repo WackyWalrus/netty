@@ -31,9 +31,17 @@ HTML;
 
 $content .= "<p>Joined " . Utils::EpochToDateTime($user->datestamp) . "</p>";
 
+$viewer->friends();
+
 if ($user->id !== $viewer->id) {
-	if (!in_array($user->id, $viewer->friends())) {
-		$content .= '<a href="#" class="btn btn-default">Add as Friend</a>';
+	if (in_array($user->id, $viewer->friends)) {
+		$content .= '<button class="btn btn-default">Remove Friends</button>';
+	}
+	if (in_array($user->id, $viewer->pending)) {
+		$content .= '<button class="btn btn-default">Pending Request</button>';
+	}
+	if (!in_array($user->id, $viewer->friends)) {
+		$content .= '<button class="btn btn-default">Add as Friend</button>';
 	}
 }
 
