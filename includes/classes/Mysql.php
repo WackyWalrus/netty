@@ -18,12 +18,17 @@ class Mysql {
 			return false;
 		}
 
-		if (count($args)) {
+		if ($args !== null &&
+				$args !== undefined &&
+				count($args)) {
 			foreach($args as $key => $arr) {
-				if ($arr['type'] === 'int') {
-					$stmt->bindValue($key, $arr['val'], PDO::PARAM_INT);
-				} else {
-					$stmt->bindValue($key, $arr['val'], PDO::PARAM_STR);
+				if ($arr['type'] !== null &&
+						$arr['type'] !== undefined) {
+					if ($arr['type'] === 'int') {
+						$stmt->bindValue($key, $arr['val'], PDO::PARAM_INT);
+					} else {
+						$stmt->bindValue($key, $arr['val'], PDO::PARAM_STR);
+					}
 				}
 			}
 		}
@@ -35,7 +40,9 @@ class Mysql {
 			$array[] = $result;
 		}
 
-		if (count($array)) {
+		if ($array !== null &&
+				!empty($array) &&
+				count($array)) {
 			return $array;
 		}
 		return false;
@@ -75,10 +82,13 @@ class Mysql {
 		$stmt = $this->pdo->prepare($query);
 
 		foreach($values as $key => $value) {
-			if ($value['type'] === 'int') {
-				$stmt->bindValue($key, $value['val'], PDO::PARAM_INT);
-			} else {
-				$stmt->bindValue($key, $value['val'], PDO::PARAM_STR);
+			if ($value['type'] !== null &&
+					$value['type'] !== undefined) {
+				if ($value['type'] === 'int') {
+					$stmt->bindValue($key, $value['val'], PDO::PARAM_INT);
+				} else {
+					$stmt->bindValue($key, $value['val'], PDO::PARAM_STR);
+				}
 			}
 		}
 

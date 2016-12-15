@@ -21,6 +21,7 @@ class User {
 			':d_id' => array ('val' => $id, 'type' => 'int'),
 			':type' => array ('val' => 'user', 'type' => 'string')
 		));
+		$this->data = $d;
 	}
 
 	function verifyLogin($token) {
@@ -45,10 +46,15 @@ class User {
 
 		$friends = array();
 		foreach ($results as $result) {
-			if ($result['user_a'] === $this->id) {
-				$friends[] = $result['user_b'];
-			} else {
-				$friends[] = $result['user_a'];
+			if ($result['user_a'] !== null &&
+					$result['user_a'] !== undefined &&
+					$result['user_b'] !== null &&
+					$result['user_b'] !== undefined) {
+				if ($result['user_a'] === $this->id) {
+					$friends[] = $result['user_b'];
+				} else {
+					$friends[] = $result['user_a'];
+				}
 			}
 		}
 
