@@ -48,7 +48,25 @@ if ($user->id !== $viewer->id) {
 $content .= <<<HTML
 	</div>
 </div>
+<div class="wall">
 HTML;
+
+$results = $pdo->run("SELECT * FROM posts WHERE uid = :uid ORDER BY datestamp DESC LIMIT 10",
+	array(
+		':uid' => array(
+			'val' => $user->id,
+			'type' => 'int'
+		)
+	)
+);
+
+foreach($results as $result) {
+	ob_start();
+	include 'includes/post.php';
+	$content .= ob_get_clean();
+}
+
+$content .= "</div>";
 
 include 'includes/template.php';
 ?>
