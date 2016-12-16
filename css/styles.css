@@ -43,6 +43,9 @@ body {
 .post-status textarea {
 	max-height: 35px;
 }
+.post-status textarea.focused {
+	max-height: none;
+}
 
 .post {
 	background: #F0F0F0;
