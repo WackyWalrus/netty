@@ -5,13 +5,13 @@ session_start();
 // Site config
 $CONF = array(
 	'name' => 'Netty',
-	'dir' => '/var/www/netty/public_html/',
+	'dir' => getcwd() . '/',
 	'url' => 'http://netty.local/'
 );
 
 $SQL = array(
 	'host' => 'localhost',
-	'user' => 'root',
+	'user' => 'netty_user',
 	'password' => 'password',
 	'db' => 'netty'
 );
