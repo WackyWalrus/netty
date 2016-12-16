@@ -3,7 +3,7 @@
 $js = array('events', 'feed');
 $content = '';
 
-if ($viewer) {
+if (isset($viewer)) {
 	$title = "Newsfeed";
 	$results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
 	$content .= <<<HTML

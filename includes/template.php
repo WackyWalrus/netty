@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password" />
                     </div>
-                    <input type="submit" value="Login" class="btn btn-default btn-success" />
+                    <input type="submit" value="Login" class="btn btn-default btn-success" /><br><br>
                     <a href="<?=$CONF['url'];?>register/"<?php if($_SERVER['SCRIPT_NAME'] === '/register.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
                 </form>
             <?php } ?>
