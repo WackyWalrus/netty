@@ -51,6 +51,32 @@ $content .= <<<HTML
 <div class="wall">
 HTML;
 
+if ($user->id === $viewer->id) {
+	$content .= <<<HTML
+<div class="post-status">
+	<form>
+		<div class="form-group">
+			<textarea placeholder="Post status..." class="form-control"></textarea>
+		</div>
+		<input type="submit" value="Post" class="btn btn-default btn-success" />
+	</form>
+</div>
+HTML;
+} else {
+	if (in_array($user->id, $viewer->friends)) {
+		$content .= <<<HTML
+<div class="post-status">
+	<form>
+		<div class="form-group">
+			<textarea placeholder="Post to wall..." class="form-control"></textarea>
+		</div>
+		<input type="submit" value="Post" class="btn btn-default btn-success" />
+	</form>
+</div>
+HTML;
+	}
+}
+
 $results = $pdo->run("SELECT * FROM posts WHERE uid = :uid ORDER BY datestamp DESC LIMIT 10",
 	array(
 		':uid' => array(

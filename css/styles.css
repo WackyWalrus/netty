@@ -73,6 +73,7 @@ body {
 
 .profile {
 	overflow: auto;
+	margin-bottom: 20px;
 }
 .profile .profile__user-img {
 	float: left;
