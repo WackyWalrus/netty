@@ -5,7 +5,7 @@ session_start();
 // Site config
 $CONF = array(
 	'name' => 'Netty',
-	'dir' => getcwd() . '/',
+	'dir' => $_SERVER['DOCUMENT_ROOT'] . '/',
 	'url' => 'http://netty.local/'
 );
 
