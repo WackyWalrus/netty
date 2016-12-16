@@ -1,11 +1,11 @@
 <?php include 'includes/include.php';
 
-$title = "Newsfeed";
 $content = '';
 
-$results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
-
-$content .= <<<HTML
+if ($viewer) {
+	$title = "Newsfeed";
+	$results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
+	$content .= <<<HTML
 <div class="post-status">
 	<form>
 		<div class="form-group">
@@ -16,12 +16,18 @@ $content .= <<<HTML
 </div>
 HTML;
 
-ob_start();
-foreach($results as $result) {
-	$user = new User($result['uid']);
-	include 'includes/post.php';
+	ob_start();
+	foreach($results as $result) {
+		$user = new User($result['uid']);
+		include 'includes/post.php';
+	}
+	$content .= ob_get_clean();
+} else {
+	$title = "Sign up!";
+	$content .= <<<HTML
+<p>Some content here about signing up</p>
+HTML;
 }
-$content .= ob_get_clean();
 
 include 'includes/template.php';
 ?>
