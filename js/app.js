@@ -8,8 +8,10 @@ if (app === undefined) {
 
     var cache = {};
     app.elems = {};
+    app.config = {};
 
     function initCache() {
+        app.config.href = window.location.href.replace(window.location.pathname, '').replace(':/', '://');
         app.elems.$body = $('body');
         app.elems.$sidebar = app.elems.$body.find('#sidebar');
         app.elems.$main = app.elems.$body.find('#main');

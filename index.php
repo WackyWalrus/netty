@@ -8,12 +8,10 @@ if (isset($viewer)) {
 	$results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
 	$content .= <<<HTML
 <div class="post-status">
-	<form>
-		<div class="form-group">
-			<textarea placeholder="Post status..." class="form-control"></textarea>
-		</div>
-		<input type="submit" value="Post" class="btn btn-default btn-success" />
-	</form>
+	<div class="form-group">
+		<textarea placeholder="Post status..." class="form-control"></textarea>
+	</div>
+	<button class="btn btn-default btn-success">Post</button>
 </div>
 HTML;
 
