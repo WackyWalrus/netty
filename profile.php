@@ -1,4 +1,5 @@
 <?php include 'includes/include.php';
+$js = array('events', 'feed');
 
 $username = str_replace('/', '', $_GET['username']);
 
