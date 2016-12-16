@@ -9,7 +9,7 @@
 
 		<div id="sidebar">
 			<h2><?=$CONF['name'];?></h2>
-			<?php if($viewer) { ?>
+			<?php if(isset($viewer)) { ?>
 				<a href="<?=$CONF['url'];?>profile/<?=$viewer->username;?>"><span class="glyphicon glyphicon-sunglasses"></span> Profile</a>
 				<a href="<?=$CONF['url'];?>"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Newsfeed</a>
 				<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Messages</a>
@@ -31,7 +31,7 @@
 
 		<div id="main" class="container-fluid">
 			<div class="heading">
-				<?php if ($title !== undefined) { ?>
+				<?php if (isset($title) && $title !== undefined) { ?>
 					<h4><?=$title;?></h4>
 				<?php } ?>
 				<form>

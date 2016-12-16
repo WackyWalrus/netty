@@ -10,7 +10,7 @@ class Mysql {
 		$this->pdo = new PDO("mysql:host={$host};dbname={$db};charset=utf8", $user, $pass, $opt);
 	}
 
-	function run($query, $args) {
+	function run($query, $args = array()) {
 		try {
 			$stmt = $this->pdo->prepare($query);
 		} catch(PDOException $e) {
