@@ -32,7 +32,7 @@
 
         <div id="main" class="container-fluid">
             <div class="heading">
-                <?php if (isset($title) && $title !== undefined) { ?>
+                <?php if (isset($title) && isset($title)) { ?>
                     <h4><?=$title;?></h4>
                 <?php } ?>
                 <form>
@@ -42,7 +42,7 @@
                     <input type="submit" value="Search" class="btn btn-default btn-success" />
                 </form>
             </div>
-            <?php if ($content !== undefined) {
+            <?php if (isset($content)) {
                 echo $content;
             } ?>
         </div>

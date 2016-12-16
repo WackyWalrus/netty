@@ -3,7 +3,7 @@
 class Utils {
 
 	function goodVariable($variable) {
-		if ($variable !== null || $variable !== undefined) {
+		if (is_null($variable) && isset($variable)) {
 			$type = getType($variable);
 			if ($type === 'array') {
 				if (!empty($variable) &&
