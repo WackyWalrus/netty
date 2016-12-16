@@ -43,13 +43,13 @@ var app = {};
     }
 
     function initEvents() {
-    	app.events.subscribe('/post-status__textarea', function() {
-    		console.log('focus');
-    	});
+        app.events.subscribe('/post-status__textarea', function () {
+            console.log('focus');
+        });
 
-    	app.elems.$body.on('focus', '.post-status textarea', function () {
-    		app.events.publish('/post-status__textarea/focus');
-    	});
+        app.elems.$body.on('focus', '.post-status textarea', function () {
+            app.events.publish('/post-status__textarea/focus');
+        });
     }
 
     app.init = function () {
