@@ -32,7 +32,7 @@
 
         <div id="main" class="container-fluid">
             <div class="heading">
-                <?php if (isset($title) && isset($title)) { ?>
+                <?php if (isset($title)) { ?>
                     <h4><?=$title;?></h4>
                 <?php } ?>
                 <form>
