@@ -14,13 +14,14 @@ if (isset($viewer)) {
 	<button class="btn btn-default btn-success">Post</button>
 </div>
 HTML;
-
+	$content .= '<div class="posts">';
 	ob_start();
 	foreach($results as $result) {
 		$user = new User($result['uid']);
 		include 'includes/post.php';
 	}
 	$content .= ob_get_clean();
+	$content .= '</div>';
 } else {
 	$title = "Sign up!";
 	$content .= <<<HTML

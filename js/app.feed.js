@@ -9,6 +9,7 @@ if (app === undefined) {
     var cache = {};
 
     function initCache() {
+        cache.$posts = app.elems.$body.find('.posts');
         cache.$postStatus = app.elems.$body.find('.post-status');
         cache.$textarea = cache.$postStatus.find('textarea');
         cache.$button =  cache.$postStatus.find('button');
@@ -52,7 +53,7 @@ if (app === undefined) {
                         'msg': cache.$textarea.val()
                     }
                 }).done(function (data) {
-                    console.log(data);
+                    cache.$posts.prepend(data);
                 });
             }
         });

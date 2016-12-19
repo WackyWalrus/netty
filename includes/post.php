@@ -6,6 +6,6 @@
 			<div class="post__user-info__datestamp"><?=Utils::EpochToDateTime($result['datestamp']);?></div>
 		</div>
 	</div>
-	<div class="post__content"><?=$result['post'];?></div>
+	<div class="post__content"><?=nl2br($result['post']);?></div>
 	<div class="post__options"><a href="#">Like</a> <a href="#">Comment</a> <a href="#">Share</a></div>
 </div>

@@ -28,4 +28,16 @@ $id = $pdo->insert(array(
 	), 'posts'
 );
 
+$result = $pdo->run("SELECT * FROM posts WHERE id = :id", array(
+	':id' => array(
+		'type' => 'int',
+		'val' => $id
+	)
+));
+
+$user = $viewer;
+$result = $result[0];
+
+include "{$CONF['dir']}includes/post.php";
+
 ?>
