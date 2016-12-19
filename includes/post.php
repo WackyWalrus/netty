@@ -1,4 +1,4 @@
-<div class="post">
+<div class="post" id="post-<?=$result['id'];?>">
 	<div class="post__user-info">
 		<a href="<?=$user->url;?>"><img src="<?=$user->picUrl;?>" width="50" height="50" class="post__user-img img-circle" /></a>
 		<div class="post__user-info__text">

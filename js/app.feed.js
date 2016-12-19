@@ -21,6 +21,24 @@ if (app === undefined) {
         }
     }
 
+    function getFirstPostId() {
+        return cache.$posts.children().first().prop('id').replace('post-', '');
+    }
+
+    function loadFeed() {
+        cache.firstPostId = getFirstPostId();
+        $.ajax({
+            'url': app.config.href + 'actions/load-new-posts.php',
+            'method': 'GET',
+            'data': {
+                'page': 'newsfeed',
+                'id': cache.firstPostId
+            }
+        }).done(function (data) {
+            cache.$posts.prepend(data);
+        });
+    }
+
     function initEvents() {
         /** textarea focus */
         app.events.subscribe('post-status__textarea/focusin', function () {
@@ -52,8 +70,8 @@ if (app === undefined) {
                     'data': {
                         'msg': cache.$textarea.val()
                     }
-                }).done(function (data) {
-                    cache.$posts.prepend(data);
+                }).done(function () {
+                    loadFeed();
                 });
             }
         });
