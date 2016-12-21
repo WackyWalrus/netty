@@ -7,5 +7,9 @@
 		</div>
 	</div>
 	<div class="post__content"><?=nl2br($post->post);?></div>
-	<div class="post__options"><a href="#">Like</a> <a href="#">Comment</a> <a href="#">Share</a></div>
+	<div class="post__options">
+		<a href="#"><?=$post->likes();?> Like<?php if($post->likes !== 1){?>s<?php } ?></a> 
+		<a href="#">Comment</a> 
+		<a href="#">Share</a>
+	</div>
 </div>
