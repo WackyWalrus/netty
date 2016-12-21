@@ -8,19 +8,6 @@ if (app === undefined) {
 
     var cache = {};
 
-    function initCache() {
-        cache.$posts = app.elems.$body.find('.posts');
-        cache.$postStatus = app.elems.$body.find('.post-status');
-        cache.$textarea = cache.$postStatus.find('textarea');
-        cache.$button =  cache.$postStatus.find('button');
-    }
-
-    function initDOM() {
-        if (cache.$textarea.val() === '') {
-            cache.$button.attr('disabled', 'disabled');
-        }
-    }
-
     function getFirstPostId() {
         return cache.$posts.children().first().prop('id').replace('post-', '');
     }
@@ -37,6 +24,22 @@ if (app === undefined) {
         }).done(function (data) {
             cache.$posts.prepend(data);
         });
+    }
+
+    function initCache() {
+        cache.$posts = app.elems.$body.find('.posts');
+        cache.$postStatus = app.elems.$body.find('.post-status');
+        cache.$textarea = cache.$postStatus.find('textarea');
+        cache.$button =  cache.$postStatus.find('button');
+    }
+
+    function initDOM() {
+        if (cache.$textarea.val() === '') {
+            cache.$button.attr('disabled', 'disabled');
+        }
+        window.setInterval(function () {
+            app.events.publish('feed/reload');
+        }, 60000);
     }
 
     function initEvents() {
@@ -71,12 +74,18 @@ if (app === undefined) {
                         'msg': cache.$textarea.val()
                     }
                 }).done(function () {
-                    loadFeed();
+                    cache.$textarea.val('');
+                    app.events.publish('feed/reload');
                 });
             }
         });
+        app.events.subscribe('feed/reload', loadFeed);
 
         app.elems.$body.on('focus blur keyup', '.post-status textarea', function (e) {
+            if (e.keyCode === 13) {
+                app.events.publish('post-status__button/click');
+                return;
+            }
             app.events.publish('post-status__textarea/' + e.type);
         });
         app.elems.$body.on('click', '.post-status button', function (e) {
