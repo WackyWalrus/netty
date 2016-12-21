@@ -5,7 +5,7 @@ $content = '';
 
 if (isset($viewer)) {
 	$title = "Newsfeed";
-	$results = $pdo->run("SELECT * FROM posts ORDER BY datestamp DESC LIMIT 10");
+	$results = $pdo->run("SELECT id FROM posts ORDER BY datestamp DESC LIMIT 10");
 	$content .= <<<HTML
 <div class="post-status">
 	<div class="form-group">
@@ -17,7 +17,8 @@ HTML;
 	$content .= '<div class="posts">';
 	ob_start();
 	foreach($results as $result) {
-		$user = new User($result['uid']);
+		$post = new Post($result['id']);
+		$user = $post->user;
 		include 'includes/post.php';
 	}
 	$content .= ob_get_clean();

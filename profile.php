@@ -78,7 +78,7 @@ HTML;
 	}
 }
 
-$results = $pdo->run("SELECT * FROM posts WHERE uid = :uid ORDER BY datestamp DESC LIMIT 10",
+$results = $pdo->run("SELECT id FROM posts WHERE uid = :uid ORDER BY datestamp DESC LIMIT 10",
 	array(
 		':uid' => array(
 			'val' => $user->id,
@@ -89,6 +89,8 @@ $results = $pdo->run("SELECT * FROM posts WHERE uid = :uid ORDER BY datestamp DE
 
 foreach($results as $result) {
 	ob_start();
+	$post = new Post($result['id']);
+	$user = $post->user;
 	include 'includes/post.php';
 	$content .= ob_get_clean();
 }
