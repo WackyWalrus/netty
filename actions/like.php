@@ -6,7 +6,7 @@ $array = array(
 	':uid' => array(
 		'col' => 'uid',
 		'type' => 'int',
-		'val' => $_POST['uid']
+		'val' => $viewer->id
 	),
 	':post_id' => array(
 		'col' => 'post_id',
@@ -17,17 +17,14 @@ $array = array(
 		'col' => 'type',
 		'type' => 'string',
 		'val' => $_POST['type']
-	),
-	':datestamp' => array(
-		'col' => 'datestamp',
-		'type' => 'int',
-		'val' => time()
 	)
 );
 
 $check = $pdo->run("SELECT COUNT(*) FROM likes WHERE uid = :uid AND post_id = :post_id AND type = :type", $array);
 
+
 if ($check[0]['COUNT(*)'] === 0) {
+	$array[':datestamp'] = array('col' => 'datestamp', 'type' => 'int', 'val' => time());
 	$like = $pdo->insert($array, "likes");
 	echo "1";
 } else {
