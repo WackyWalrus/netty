@@ -42,6 +42,10 @@ if (app === undefined) {
         }, 60000);
     }
 
+    function likePost(id) {
+
+    }
+
     function initEvents() {
         /** textarea focus */
         app.events.subscribe('post-status__textarea/focusin', function () {
@@ -90,6 +94,31 @@ if (app === undefined) {
         });
         app.elems.$body.on('click', '.post-status button', function (e) {
             app.events.publish('post-status__button/' + e.type);
+        });
+        app.elems.$body.on('click', '.action-like', function(e) {
+            e.preventDefault();
+            var $link = $(this),
+                $num = $link.find('.num'),
+                post_id = $link.closest('.post').attr('id').replace('post-', '');
+            $.ajax({
+                'url': app.config.href + 'actions/like.php',
+                'method': 'POST',
+                'data': {
+                    'post_id': post_id,
+                    'type': 'post'
+                }
+            }).done(function (data) {
+                if (data === '1') {
+                    $num.html(parseInt($num.html(), 10) + 1);
+                } else {
+                    $num.html(parseInt($num.html(), 10) - 1);
+                }
+                if (parseInt($num.html(), 10) === 1) {
+                    $link.find('.s').html('');
+                } else {
+                    $link.find('.s').html('s');
+                }
+            });
         });
     }
 
