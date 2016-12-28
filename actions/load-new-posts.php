@@ -13,9 +13,11 @@ if ($_GET['page'] === 'newsfeed') {
 
 }
 
-foreach ($results as $result) {
-	$post = new Post($result['id']);
-	$user = $post->user;
-	include '../includes/post.php';
+if (isset($results)) {
+	foreach ($results as $result) {
+		$post = new Post($result['id']);
+		$user = $post->user;
+		include '../includes/post.php';
+	}
 }
 ?>
