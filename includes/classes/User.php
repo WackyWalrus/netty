@@ -70,6 +70,22 @@ class User {
 		$this->pending = $pending;
 		return $friends;
 	}
+
+	function html() {
+		$date = Utils::EpochToDateTime($this->datestamp);
+		$html = <<<HTML
+<div class="post" id="member-include-$this->id">
+	<div class="post__user-info">
+		<a href="$this->url"><img src="$this->picUrl" width="50" height="50" class="post__user-img img-circle" /></a>
+		<div class="post__user-info__text">
+			<div class="post__user-info__name"><a href="$this->url">$this->username</a></div>
+			<div class="post__user-info__datestamp">Joined $date</div>
+		</div>
+	</div>
+</div>
+HTML;
+		return $html;
+	}
 }
 
 ?>
