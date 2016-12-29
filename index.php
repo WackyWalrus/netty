@@ -3,9 +3,24 @@
 $js = array('events', 'feed');
 $content = '';
 
+/**
+ * SELECT posts.id, posts.uid, friendships.user_a, friendships.user_b FROM posts
+ * INNER JOIN friendships ON posts.uid = friendships.user_a OR posts.uid = friendships.user_b
+ * WHERE friendships.user_a = 1002 OR friendships.user_b = 1002;
+ */
+
 if (isset($viewer)) {
 	$title = "Newsfeed";
-	$results = $pdo->run("SELECT id FROM posts ORDER BY datestamp DESC LIMIT 10");
+	$results = $pdo->run("SELECT posts.id, posts.uid, friendships.user_a, friendships.user_b FROM posts INNER JOIN friendships ON posts.uid = friendships.user_a OR posts.uid = friendships.user_b WHERE friendships.user_a = :viewer1 OR friendships.user_b = :viewer2 ORDER BY posts.id DESC", array(
+		':viewer1' => array(
+			'type' => 'int',
+			'val' => $viewer->id
+		),
+		':viewer2' => array(
+			'type' => 'int',
+			'val' => $viewer->id
+		)
+	));
 	$content .= <<<HTML
 <div class="post-status">
 	<div class="form-group">
