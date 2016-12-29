@@ -88,11 +88,8 @@ $results = $pdo->run("SELECT id FROM posts WHERE uid = :uid ORDER BY datestamp D
 );
 
 foreach($results as $result) {
-	ob_start();
 	$post = new Post($result['id']);
-	$user = $post->user;
-	include 'includes/post.php';
-	$content .= ob_get_clean();
+	$content .= $post->html();
 }
 
 $content .= "</div>";

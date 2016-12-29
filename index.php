@@ -33,8 +33,7 @@ HTML;
 	ob_start();
 	foreach($results as $result) {
 		$post = new Post($result['id']);
-		$user = $post->user;
-		include 'includes/post.php';
+		echo $post->html();
 	}
 	$content .= ob_get_clean();
 	$content .= '</div>';
