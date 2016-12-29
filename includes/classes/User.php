@@ -74,7 +74,7 @@ class User {
 	function html() {
 		$date = Utils::EpochToDateTime($this->datestamp);
 		$html = <<<HTML
-<div class="post" id="member-include-$this->id">
+<div class="post member-include" id="member-include-$this->id">
 	<div class="post__user-info">
 		<a href="$this->url"><img src="$this->picUrl" width="50" height="50" class="post__user-img img-circle" /></a>
 		<div class="post__user-info__text">

@@ -82,3 +82,8 @@ body {
 .profile .profile__user-info {
 	float: left;
 }
+
+.post.member-include {
+	float: left;
+	margin-right: 10px;
+}
