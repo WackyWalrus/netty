@@ -14,7 +14,7 @@
                 <a href="<?=$CONF['url'];?>"<?php if($_SERVER['SCRIPT_NAME']==='/index.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Newsfeed</a>
                 <a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Messages</a>
                 <a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events</a>
-                <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Find Friends</a>
+                <a href="<?=$CONF['url'];?>members/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Find Friends</a>
                 <a href="<?=$CONF['url'];?>actions/logout.php" class="btn btn-default btn-danger" style="margin-top:20px">Logout</a>
             <?php } else { ?>
                 <form action="<?=$CONF['url'];?>actions/login.php" method="post">
