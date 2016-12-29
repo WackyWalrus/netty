@@ -9,7 +9,7 @@ if (isset($viewer)) {
 
 	foreach($results as $result) {
 		$user = new User($result['id']);
-		$content .= $user->username . "<br>";
+		$content .= $user->html();
 	}
 
 } else {
