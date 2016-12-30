@@ -13,7 +13,8 @@ if (app === undefined) {
             app.elems.$sidebar.toggleClass('visible');
         });
 
-        function toggle() {
+        function toggle(e) {
+            e.preventDefault();
             app.events.publish('sidebar/toggle');
         }
 

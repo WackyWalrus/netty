@@ -18,6 +18,7 @@ body {
 	font-size: 12px;
 }
 #close-sidebar {
+	display: none;
 	position: absolute;
 	top: 45px;
 	right: 20px;
@@ -38,7 +39,8 @@ body {
 	body {
 		padding: 0;
 	}
-	#open-sidebar {
+	#open-sidebar,
+	#close-sidebar {
 		display: block;
 	}
 	#sidebar {
