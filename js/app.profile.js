@@ -16,12 +16,19 @@ if (app === undefined) {
     function initEvents() {
         app.events.subscribe('profile/friend-button', function () {
             $.ajax({
-                'url': app.config.href + 'actions/friendship.php',
+                'url': app.config.href + '/actions/friend-request-start.php',
                 'method': 'POST',
                 'data': {
                     'id': cache.id
                 }
             }).done(function (data) {
+                console.log(data);
+                if (data === "remove friend") {
+                } else if (data === "cancel request") {
+                } else if (data === "send request") {
+                } else {
+                    console.log("something went wrong");
+                }
             });
         });
 
