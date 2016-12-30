@@ -17,6 +17,45 @@ body {
 #sidebar a span {
 	font-size: 12px;
 }
+#close-sidebar {
+	position: absolute;
+	top: 45px;
+	right: 20px;
+	font-size: 18px;
+}
+#close-sidebar a {
+	color: #FFFFFF;
+}
+
+#open-sidebar {
+	display: none;
+	padding: 10px;
+	text-align: right;
+	font-size: 20px;
+}
+
+@media all and (max-width:768px) {
+	body {
+		padding: 0;
+	}
+	#open-sidebar {
+		display: block;
+	}
+	#sidebar {
+		width: 0;
+		height: 0;
+		padding: 0;
+		overflow: hidden;
+		z-index: 9;
+	}
+	#sidebar.visible {
+		box-sizing: border-box;
+		right: 0;
+		width: auto;
+		height: auto;
+		padding: 20px;
+	}
+}
 
 .heading {
 	overflow: auto;

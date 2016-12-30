@@ -15,6 +15,7 @@ if (app === undefined) {
         app.elems.$body = $('body');
         app.elems.$sidebar = app.elems.$body.find('#sidebar');
         app.elems.$main = app.elems.$body.find('#main');
+        app.elems.$sidebarOpen = app.elems.$body.find('#open-sidebar');
     }
 
     app.init = function () {

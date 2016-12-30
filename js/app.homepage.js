@@ -1,32 +1,30 @@
-'use strict'
+'use strict';
 
 if (app === undefined) {
-	app = {};
+    app = {};
 }
 
-(function (app, $){
-	var cache = {};
+(function (app, $) {
+    var cache = {};
 
-	function initCache() {
-		cache.$input = app.elems.$sidebar.find('[name="username"]');
-	}
+    function initCache() {
+        cache.$input = app.elems.$sidebar.find('[name="username"]');
+    }
 
-	function initDOM() {
-		cache.$input.focus();
-		cache.$input.trigger('focus');
-	}
+    function initDOM() {
+        cache.$input.focus();
+        cache.$input.trigger('focus');
+    }
 
-	function initEvents() {
+    function initEvents() {
 
-	}
+    }
 
-	app.homepage = {
-		init: function () {
-			initCache();
-			initDOM();
-			initEvents();
-		}
-	}
+    app.homepage = {
+        init: function () {
+            initCache();
+            initDOM();
+            initEvents();
+        }
+    };
 }(app, $));
-
-app.homepage.init();

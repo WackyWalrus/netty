@@ -4,11 +4,19 @@
         <title>netty</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?=$CONF['url'];?>css/styles.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     </head>
     <body>
 
+        <div id="open-sidebar">
+            <a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+        </div>
+
         <div id="sidebar">
             <h2><?=$CONF['name'];?></h2>
+            <div id="close-sidebar">
+                <a href=""><i class="glyphicon glyphicon-remove"></i></a>
+            </div>
             <?php if(isset($viewer)) { ?>
                 <a href="<?=$CONF['url'];?>profile/<?=$viewer->username;?>"><span class="glyphicon glyphicon-sunglasses"></span> Profile</a>
                 <a href="<?=$CONF['url'];?>"<?php if($_SERVER['SCRIPT_NAME']==='/index.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Newsfeed</a>
@@ -54,6 +62,7 @@
         echo "<script src=\"{$CONF['url']}js/app.{$s}.js\" type=\"text/javascript\"></script>";
     }
 } ?>
+<script src="<?=$CONF['url'];?>js/app.sidebar.js" type="text/javascript"></script>
 <script src="<?=$CONF['url'];?>js/app.js" type="text/javascript"></script>
     </body>
 </html>
