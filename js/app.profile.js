@@ -14,15 +14,15 @@ if (app === undefined) {
     }
 
     function rmFriend() {
-        
+        app.utils.overlay("Are you sure you want to remove this friend?");
     }
 
     function cancelRequest() {
-
+        app.utils.overlay("Are you sure you want to cancel this friend request?");
     }
 
     function sendRequest() {
-
+        app.utils.overlay("Are you sure you want to send this person a friend request?");
     }
 
     function initEvents() {

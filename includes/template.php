@@ -63,6 +63,7 @@
     }
 } ?>
 <script src="<?=$CONF['url'];?>js/app.sidebar.js" type="text/javascript"></script>
+<script src="<?=$CONF['url'];?>js/app.utils.js" type="text/javascript"></script>
 <script src="<?=$CONF['url'];?>js/app.js" type="text/javascript"></script>
     </body>
 </html>

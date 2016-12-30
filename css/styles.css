@@ -128,3 +128,23 @@ body {
 	float: left;
 	margin-right: 10px;
 }
+
+.overlay-backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 99;
+}
+
+.overlay-content {
+	background: #FFFFFF;
+	position: absolute;
+	z-index: 999;
+	border-radius: 2px;
+	padding: 20px;
+	left: 50%;
+	top: 50%;
+}
