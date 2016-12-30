@@ -13,6 +13,18 @@ if (app === undefined) {
         cache.id = cache.$profile.attr('id').replace('profile-', '');
     }
 
+    function rmFriend() {
+        
+    }
+
+    function cancelRequest() {
+
+    }
+
+    function sendRequest() {
+
+    }
+
     function initEvents() {
         app.events.subscribe('profile/friend-button', function () {
             $.ajax({
@@ -22,10 +34,12 @@ if (app === undefined) {
                     'id': cache.id
                 }
             }).done(function (data) {
-                console.log(data);
                 if (data === "remove friend") {
+                    rmFriend();
                 } else if (data === "cancel request") {
+                    cancelRequest();
                 } else if (data === "send request") {
+                    sendRequest();
                 } else {
                     console.log("something went wrong");
                 }
