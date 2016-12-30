@@ -20,8 +20,8 @@ body {
 #close-sidebar {
 	display: none;
 	position: absolute;
-	top: 45px;
-	right: 20px;
+	top: 11px;
+	right: 11px;
 	font-size: 18px;
 }
 #close-sidebar a {

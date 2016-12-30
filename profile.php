@@ -1,5 +1,5 @@
 <?php include 'includes/include.php';
-$js = array('events', 'feed');
+$js = array('events', 'feed', 'profile');
 
 $username = str_replace('/', '', $_GET['username']);
 
@@ -24,7 +24,7 @@ if (isset($checkUser) && !empty($checkUser)) {
 
 $title = '';
 $content = <<<HTML
-<div class="profile">
+<div class="profile" id="profile-$user->id">
 	<img src="{$user->picUrl}" width="150" height="150" class="profile__user-img img-circle" />
 	<div class="profile__user-info">
 		<h3>{$user->username}</h3>
@@ -36,13 +36,13 @@ $viewer->friends();
 
 if ($user->id !== $viewer->id) {
 	if (in_array($user->id, $viewer->friends)) {
-		$content .= '<button class="btn btn-default">Remove Friends</button>';
+		$content .= '<button class="btn btn-default friend-btn">Remove Friends</button>';
 	}
 	if (in_array($user->id, $viewer->pending)) {
-		$content .= '<button class="btn btn-default">Pending Request</button>';
+		$content .= '<button class="btn btn-default friend-btn">Pending Request</button>';
 	}
 	if (!in_array($user->id, $viewer->friends)) {
-		$content .= '<button class="btn btn-default">Add as Friend</button>';
+		$content .= '<button class="btn btn-default friend-btn">Add as Friend</button>';
 	}
 }
 
