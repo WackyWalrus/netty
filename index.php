@@ -38,6 +38,7 @@ HTML;
 	$content .= ob_get_clean();
 	$content .= '</div>';
 } else {
+	$js[] = 'homepage';
 	$title = "Sign up!";
 	$content .= <<<HTML
 <p>Some content here about signing up</p>
