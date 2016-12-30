@@ -9,7 +9,10 @@ if (app === undefined) {
     var cache = {};
 
     function getFirstPostId() {
-        return cache.$posts.children().first().prop('id').replace('post-', '');
+        var id = cache.$posts.children().first().prop('id').replace('post-', '');
+        if (id) {
+            return id;
+        }
     }
 
     function loadFeed() {
