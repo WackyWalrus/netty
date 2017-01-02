@@ -13,7 +13,7 @@ if (app === undefined) {
         },
         overlay: function (content) {
             if (content !== undefined) {
-                cache.$overlay = $('<div class="overlay-backdrop"><div class="overlay-content">' + content + '</div></div>');
+                cache.$overlay = $('<div class="overlay-backdrop"><div class="overlay-content"><div class="overlay-close">X</div>' + content + '</div></div>');
                 app.elems.$body.append(cache.$overlay);
                 cache.$overlay.find('.overlay-content').css({
                     'margin-left': -(cache.$overlay.find('.overlay-content').width() / 2),
