@@ -33,6 +33,7 @@ if (app === undefined) {
             friendAction('remove', function () {
                 cache.overlay.$().off('click', '.friend-remove', doRemove);
                 cache.$friendButton.html('Add as Friend');
+                app.utils.refreshModule('feed-form');
             });
         }
 

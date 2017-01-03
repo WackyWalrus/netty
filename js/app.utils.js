@@ -11,6 +11,7 @@ if (app === undefined) {
     app.utils = {
         init: function () {
         },
+
         overlay: function (content) {
             function realign() {
                 cache.$overlay.find('.overlay-content').css({
@@ -47,6 +48,16 @@ if (app === undefined) {
                 return overlay;
             }
             return false;
+        },
+
+        refreshModule: function (module) {
+            cache.$module = app.elems.$body.find('[data-module=' + module + ']');
+            $.ajax({
+                'url': app.config.href + '/includes/modules/' + module + '.php',
+                'method': 'POST'
+            }).done(function (data) {
+                cache.$module.replaceWith(data);
+            });
         }
     };
 }(app, $));

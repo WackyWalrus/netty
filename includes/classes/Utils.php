@@ -31,6 +31,12 @@ class Utils {
 		}
 		return date('m/d/y h:ia');
 	}
+
+	function includeToVar($includefile) {
+		ob_start();
+		include $includefile;
+		return ob_get_clean();
+	}
 }
 
 ?>
