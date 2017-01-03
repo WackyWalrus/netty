@@ -23,7 +23,7 @@
                 <a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Messages</a>
                 <a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events</a>
                 <a href="<?=$CONF['url'];?>members/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Find Friends</a>
-                <a href="<?=$CONF['url'];?>"<?php if($_SERVER['SCRIPT_NAME']==='/requests.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-fire"></span> Requests</a>
+                <a href="<?=$CONF['url'];?>requests/"<?php if($_SERVER['SCRIPT_NAME']==='/requests.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-fire"></span> Requests <span class="note<?php if(count($viewer->requests) > 0){?> visible<?php } ?>"><?=count($viewer->requests);?></span></a>
                 <a href="<?=$CONF['url'];?>actions/logout.php" class="btn btn-default btn-danger" style="margin-top:20px">Logout</a>
             <?php } else { ?>
                 <form action="<?=$CONF['url'];?>actions/login.php" method="post">
@@ -34,7 +34,7 @@
                         <input type="password" name="password" class="form-control" placeholder="Password" />
                     </div>
                     <input type="submit" value="Login" class="btn btn-default btn-success" /><br><br>
-                    <a href="<?=$CONF['url'];?>register/"<?php if($_SERVER['SCRIPT_NAME'] === '/register.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Sign up</a>
+                    <a href="<?=$CONF['url'];?>register/"<?php if($_SERVER['SCRIPT_NAME'] === '/register.php'){?> class="current"<?php } ?>><span class="glyphicon glyphicon-cog"></span>Sign up</a>
                 </form>
             <?php } ?>
         </div>

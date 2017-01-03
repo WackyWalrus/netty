@@ -46,6 +46,7 @@ class User {
 
 		$friends = array();
 		$pending = array();
+		$requests = array();
 
 		if (!empty($results)) {
 			foreach ($results as $result) {
@@ -63,7 +64,7 @@ class User {
 						if (intval($result['user_a']) === $this->id) {
 							$pending[] = $result['user_b'];
 						} else {
-							$pending[] = $result['user_a'];
+							$requests[] = $result['user_a'];
 						}
 					}
 				}
@@ -72,6 +73,7 @@ class User {
 
 		$this->friends = $friends;
 		$this->pending = $pending;
+		$this->requests = $requests;
 		return $friends;
 	}
 
