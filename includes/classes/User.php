@@ -31,7 +31,7 @@ class User {
 	function friends() {
 		global $pdo;
 
-		$results = $pdo->run("SELECT user_a, user_b FROM friendships WHERE user_a = :user_a OR user_b = :user_b",
+		$results = $pdo->run("SELECT user_a, user_b, active FROM friendships WHERE user_a = :user_a OR user_b = :user_b",
 			array(
 				':user_a' => array(
 					'val' => $this->id,
@@ -46,21 +46,23 @@ class User {
 
 		$friends = array();
 		$pending = array();
+
 		foreach ($results as $result) {
 			if (Utils::goodVariable($result['user_a']) &&
 					Utils::goodVariable($result['user_b']) &&
 					Utils::goodVariable($result['active'])) {
-				if ($result['active'] === 1) {
-					if ($result['user_a'] === $this->id) {
+
+				if ($result['active'] === '1') {
+					if (intval($result['user_a']) === $this->id) {
 						$friends[] = $result['user_b'];
 					} else {
 						$friends[] = $result['user_a'];
 					}
 				} else {
-					if ($result['user_a'] === $this->id) {
+					if (intval($result['user_a']) === $this->id) {
 						$pending[] = $result['user_b'];
 					} else {
-						$pending[] = $results['user_a'];
+						$pending[] = $result['user_a'];
 					}
 				}
 			}

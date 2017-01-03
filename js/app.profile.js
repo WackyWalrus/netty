@@ -14,22 +14,36 @@ if (app === undefined) {
     }
 
     function rmFriend() {
-        cache.overlay = app.utils.overlay("Are you sure you want to remove this friend?");
+        cache.overlay = app.utils.overlay("Are you sure you want to remove this friend?<br><button type='button' class='btn btn-danger friend-remove'>Remove</button>");
         cache.overlay.title("Remove Friend");
     }
 
     function cancelRequest() {
-        cache.overlay = app.utils.overlay("Are you sure you want to cancel this friend request?");
+        cache.overlay = app.utils.overlay("Are you sure you want to cancel this friend request?<br><button type='button' class='btn btn-danger friend-cancel'>Cancel</button>");
         cache.overlay.title("Cancel Request");
     }
 
     function sendRequest() {
-        cache.overlay = app.utils.overlay("Are you sure you want to send this person a friend request?");
+        function doRequest() {
+            $.ajax({
+                'url': app.config.href + '/actions/friend-request-finish.php',
+                'method': 'POST',
+                'data': {
+                    'id': cache.id,
+                    'action': 'request'
+                }
+            }).done(function (data) {
+                cache.overlay.text(data);
+            });
+        }
+
+        cache.overlay = app.utils.overlay("Are you sure you want to send this person a friend request?<br><button type='button' class='btn btn-success friend-request'>Request</button>");
         cache.overlay.title("Request Friend");
+        cache.overlay.$().on('click', '.friend-request', doRequest);
     }
 
     function initEvents() {
-        app.events.subscribe('profile/friend-button', function () {
+        function friendButton() {
             $.ajax({
                 'url': app.config.href + '/actions/friend-request-start.php',
                 'method': 'POST',
@@ -47,7 +61,9 @@ if (app === undefined) {
                     console.log("something went wrong");
                 }
             });
-        });
+        }
+
+        app.events.subscribe('profile/friend-button', friendButton);
 
         cache.$profile.on('click', '.friend-btn', function () {
             app.events.publish('profile/friend-button');

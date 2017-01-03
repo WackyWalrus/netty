@@ -19,11 +19,17 @@ if (app === undefined) {
                 },
                 'title': function (arg) {
                     cache.$overlay.find('.overlay-title').html(arg);
+                },
+                'text': function (arg) {
+                    cache.$overlay.find('.overlay-text').html(arg);
+                },
+                '$': function () {
+                    return cache.$overlay;
                 }
             };
 
             if (content !== undefined) {
-                cache.$overlay = $('<div class="overlay-backdrop"><div class="overlay-content"><div class="overlay-close">X</div><div class="overlay-title"></div>' + content + '</div></div>');
+                cache.$overlay = $('<div class="overlay-backdrop"><div class="overlay-content"><div class="overlay-close">X</div><div class="overlay-title"></div><div class="overlay-text">' + content + '</div></div></div>');
                 app.elems.$body.append(cache.$overlay);
                 cache.$overlay.find('.overlay-content').css({
                     'margin-left': -(cache.$overlay.find('.overlay-content').width() / 2),

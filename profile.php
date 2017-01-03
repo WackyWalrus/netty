@@ -41,7 +41,7 @@ if ($user->id !== $viewer->id) {
 	if (in_array($user->id, $viewer->pending)) {
 		$content .= '<button class="btn btn-default friend-btn">Pending Request</button>';
 	}
-	if (!in_array($user->id, $viewer->friends)) {
+	if (!in_array($user->id, $viewer->friends) && !in_array($user->id, $viewer->pending)) {
 		$content .= '<button class="btn btn-default friend-btn">Add as Friend</button>';
 	}
 }
