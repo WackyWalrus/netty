@@ -32,7 +32,13 @@ class Utils {
 		return date('m/d/y h:ia');
 	}
 
-	function includeToVar($includefile) {
+	function includeToVar($includefile, $globals = array()) {
+		if (!empty($globals)) {
+			foreach($globals as $global) {
+				global ${$global};
+			}
+		}
+
 		ob_start();
 		include $includefile;
 		return ob_get_clean();

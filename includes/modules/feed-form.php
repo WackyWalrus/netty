@@ -1,6 +1,4 @@
-<?php include '../includes/include.php';
-
-$form = <<<HTML
+<?php $form = <<<HTML
 <div class="post-status">
 	<form>
 		<div class="form-group">

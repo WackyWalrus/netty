@@ -52,7 +52,7 @@ $content .= <<<HTML
 <div class="wall">
 HTML;
 
-$content .= Utils::includeToVar('includes/modules/feed-form.php');
+$content .= Utils::includeToVar('includes/modules/feed-form.php', array('user', 'viewer'));
 
 $results = $pdo->run("SELECT id FROM posts WHERE uid = :uid ORDER BY datestamp DESC LIMIT 10",
 	array(
