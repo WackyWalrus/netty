@@ -32,6 +32,10 @@ class Mysql {
 
 		$stmt->execute();
 
+		if (strpos($query, "DELETE") === 0) {
+			return;
+		}
+
 		$array = array();
 		while ($result = $stmt->fetch()) {
 			$array[] = $result;

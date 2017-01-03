@@ -8,32 +8,57 @@ if (app === undefined) {
 
     var cache = {};
 
-    function initDOM() {
+    function friendAction(arg, cb) {
+        $.ajax({
+            'url': app.config.href + '/actions/friend-request-finish.php',
+            'method': 'POST',
+            'data': {
+                'id': cache.id,
+                'action': arg
+            }
+        }).done(function (data) {
+            cache.overlay.text(data);
+            cb();
+        });
+    }
+
+    function initCache() {
         cache.$profile = app.elems.$body.find('.profile');
         cache.id = cache.$profile.attr('id').replace('profile-', '');
+        cache.$friendButton = cache.$profile.find('.friend-btn');
     }
 
     function rmFriend() {
+        function doRemove() {
+            friendAction('remove', function () {
+                cache.overlay.$().off('click', '.friend-remove', doRemove);
+                cache.$friendButton.html('Add as Friend');
+            });
+        }
+
         cache.overlay = app.utils.overlay("Are you sure you want to remove this friend?<br><button type='button' class='btn btn-danger friend-remove'>Remove</button>");
         cache.overlay.title("Remove Friend");
+        cache.overlay.$().on('click', '.friend-remove', doRemove);
     }
 
     function cancelRequest() {
+        function doCancel() {
+            friendAction('cancel', function () {
+                cache.overlay.$().off('click', '.friend-cancel', doCancel);
+                cache.$friendButton.html('Add as Friend');
+            });
+        }
+
         cache.overlay = app.utils.overlay("Are you sure you want to cancel this friend request?<br><button type='button' class='btn btn-danger friend-cancel'>Cancel</button>");
         cache.overlay.title("Cancel Request");
+        cache.overlay.$().on('click', '.friend-cancel', doCancel);
     }
 
     function sendRequest() {
         function doRequest() {
-            $.ajax({
-                'url': app.config.href + '/actions/friend-request-finish.php',
-                'method': 'POST',
-                'data': {
-                    'id': cache.id,
-                    'action': 'request'
-                }
-            }).done(function (data) {
-                cache.overlay.text(data);
+            friendAction('request', function () {
+                cache.overlay.$().off('click', '.friend-request', doRequest);
+                cache.$friendButton.html('Pending Request');
             });
         }
 
@@ -72,7 +97,7 @@ if (app === undefined) {
 
     app.profile = {
         init: function () {
-            initDOM();
+            initCache();
             initEvents();
         }
     };
