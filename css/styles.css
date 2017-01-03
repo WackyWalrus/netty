@@ -139,6 +139,10 @@ body {
 	z-index: 99;
 }
 
+.overlay-title {
+	font-size: 24px;
+}
+
 .overlay-content {
 	background: #FFFFFF;
 	position: absolute;
