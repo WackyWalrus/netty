@@ -47,22 +47,24 @@ class User {
 		$friends = array();
 		$pending = array();
 
-		foreach ($results as $result) {
-			if (Utils::goodVariable($result['user_a']) &&
-					Utils::goodVariable($result['user_b']) &&
-					Utils::goodVariable($result['active'])) {
+		if (!empty($results)) {
+			foreach ($results as $result) {
+				if (Utils::goodVariable($result['user_a']) &&
+						Utils::goodVariable($result['user_b']) &&
+						Utils::goodVariable($result['active'])) {
 
-				if ($result['active'] === '1') {
-					if (intval($result['user_a']) === $this->id) {
-						$friends[] = $result['user_b'];
+					if ($result['active'] === '1') {
+						if (intval($result['user_a']) === $this->id) {
+							$friends[] = $result['user_b'];
+						} else {
+							$friends[] = $result['user_a'];
+						}
 					} else {
-						$friends[] = $result['user_a'];
-					}
-				} else {
-					if (intval($result['user_a']) === $this->id) {
-						$pending[] = $result['user_b'];
-					} else {
-						$pending[] = $result['user_a'];
+						if (intval($result['user_a']) === $this->id) {
+							$pending[] = $result['user_b'];
+						} else {
+							$pending[] = $result['user_a'];
+						}
 					}
 				}
 			}

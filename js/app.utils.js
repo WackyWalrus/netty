@@ -52,9 +52,14 @@ if (app === undefined) {
 
         refreshModule: function (module) {
             cache.$module = app.elems.$body.find('[data-module=' + module + ']');
+            cache.data = {};
+            cache.$module.find('input[type="hidden"]').each(function (i) {
+                cache.data[$(this).attr('name')] = $(this).val();
+            });
             $.ajax({
                 'url': app.config.href + '/includes/modules/' + module + '.php',
-                'method': 'POST'
+                'method': 'GET',
+                'data': cache.data
             }).done(function (data) {
                 cache.$module.replaceWith(data);
             });

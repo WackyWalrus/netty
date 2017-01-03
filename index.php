@@ -21,14 +21,7 @@ if (isset($viewer)) {
 			'val' => $viewer->id
 		)
 	));
-	$content .= <<<HTML
-<div class="post-status">
-	<div class="form-group">
-		<textarea placeholder="Post status..." class="form-control"></textarea>
-	</div>
-	<button class="btn btn-default btn-success">Post</button>
-</div>
-HTML;
+	$content .= Utils::includeToVar('includes/modules/feed-form.php');
 	$content .= '<div class="posts">';
 	ob_start();
 	foreach($results as $result) {

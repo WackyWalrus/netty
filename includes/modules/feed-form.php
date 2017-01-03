@@ -1,4 +1,8 @@
-<?php $form = <<<HTML
+<?php if ((@include_once 'includes/include.php') === false) {
+	include_once '../include.php';
+}
+
+$form = <<<HTML
 <div class="post-status">
 	<form>
 		<div class="form-group">

@@ -34,17 +34,7 @@ $content .= "<p>Joined " . Utils::EpochToDateTime($user->datestamp) . "</p>";
 
 $viewer->friends();
 
-if ($user->id !== $viewer->id) {
-	if (in_array($user->id, $viewer->friends)) {
-		$content .= '<button class="btn btn-default friend-btn">Remove Friends</button>';
-	}
-	if (in_array($user->id, $viewer->pending)) {
-		$content .= '<button class="btn btn-default friend-btn">Pending Request</button>';
-	}
-	if (!in_array($user->id, $viewer->friends) && !in_array($user->id, $viewer->pending)) {
-		$content .= '<button class="btn btn-default friend-btn">Add as Friend</button>';
-	}
-}
+$content .= Utils::includeToVar('includes/modules/friend-request-button.php', array('user', 'viewer'));
 
 $content .= <<<HTML
 	</div>

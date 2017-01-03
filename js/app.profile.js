@@ -32,7 +32,7 @@ if (app === undefined) {
         function doRemove() {
             friendAction('remove', function () {
                 cache.overlay.$().off('click', '.friend-remove', doRemove);
-                cache.$friendButton.html('Add as Friend');
+                app.utils.refreshModule('friend-request-button');
                 app.utils.refreshModule('feed-form');
             });
         }
@@ -46,7 +46,7 @@ if (app === undefined) {
         function doCancel() {
             friendAction('cancel', function () {
                 cache.overlay.$().off('click', '.friend-cancel', doCancel);
-                cache.$friendButton.html('Add as Friend');
+                app.utils.refreshModule('friend-request-button');
             });
         }
 
@@ -59,7 +59,7 @@ if (app === undefined) {
         function doRequest() {
             friendAction('request', function () {
                 cache.overlay.$().off('click', '.friend-request', doRequest);
-                cache.$friendButton.html('Pending Request');
+                app.utils.refreshModule('friend-request-button');
             });
         }
 
