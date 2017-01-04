@@ -1,6 +1,7 @@
 <?php include 'includes/include.php';
 
-$js = array('events');
+$js = array('events', 'friendButton');
+$content = '';
 
 if (isset($viewer)) {
 	$title = "Members";

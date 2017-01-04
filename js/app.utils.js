@@ -50,8 +50,8 @@ if (app === undefined) {
             return false;
         },
 
-        refreshModule: function (module) {
-            cache.$module = app.elems.$body.find('[data-module=' + module + ']');
+        refreshModule: function (module, id) {
+            cache.$module = app.elems.$body.find('[data-module=' + module + '].module-' + id);
             cache.data = {};
             cache.$module.find('input[type="hidden"]').each(function (i) {
                 cache.data[$(this).attr('name')] = $(this).val();

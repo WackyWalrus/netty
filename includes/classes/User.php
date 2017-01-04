@@ -22,6 +22,8 @@ class User {
 			':type' => array ('val' => 'user', 'type' => 'string')
 		));
 		$this->data = $d;
+
+		$this->friends();
 	}
 
 	function verifyLogin($token) {
@@ -78,6 +80,9 @@ class User {
 	}
 
 	function html() {
+		global $viewer;
+		global $CONF;
+
 		$date = Utils::EpochToDateTime($this->datestamp);
 		$html = <<<HTML
 <div class="post member-include" id="member-include-$this->id">
@@ -87,6 +92,14 @@ class User {
 			<div class="post__user-info__name"><a href="$this->url">$this->username</a></div>
 			<div class="post__user-info__datestamp">Joined $date</div>
 		</div>
+HTML;
+		if (isset($viewer) && $this->id !== $viewer->id) {
+			$html .= '<div class="member-include__actions">';
+			$user = $this;
+			$html .= Utils::includeToVar("{$CONF['dir']}includes/modules/friend-request-button.php", array('viewer', 'user'));
+			$html .= '</div>';
+		}
+		$html .= <<<HTML
 	</div>
 </div>
 HTML;

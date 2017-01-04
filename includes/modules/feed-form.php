@@ -14,7 +14,7 @@ $form = <<<HTML
 HTML;
 ?>
 
-<div class="module" data-module="feed-form">
+<div class="module module-<?=rand();?>" data-module="feed-form">
 	<?php if($_SERVER['SCRIPT_NAME'] === '/profile.php') {
 		if ($user->id === $viewer->id) {
 			echo $form;

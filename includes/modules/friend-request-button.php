@@ -4,15 +4,14 @@
 $viewer->friends();
 if (isset($_GET['user_id'])) {
 	$user = new User($_GET['user_id']);
-	$user->friends();
 }
 ?>
 
-<div class="module" data-module="friend-request-button">
+<div class="module module-<?=rand();?>" data-module="friend-request-button">
 	<input type="hidden" name="user_id" value="<?=$user->id;?>"  />
 	<?php if ($user->id !== $viewer->id) {
 		if (in_array($user->id, $viewer->friends)) { ?>
-			<button class="btn btn-default friend-btn">Remove Friends</button>
+			<button class="btn btn-default friend-btn">Remove Friend</button>
 		<?php }
 		if (in_array($user->id, $viewer->pending)) { ?>
 			<button class="btn btn-default friend-btn">Pending Request</button>

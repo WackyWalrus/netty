@@ -1,5 +1,5 @@
 <?php include 'includes/include.php';
-$js = array('events', 'feed', 'profile');
+$js = array('events', 'feed', 'profile', 'friendButton');
 
 $username = str_replace('/', '', $_GET['username']);
 
@@ -31,8 +31,6 @@ $content = <<<HTML
 HTML;
 
 $content .= "<p>Joined " . Utils::EpochToDateTime($user->datestamp) . "</p>";
-
-$viewer->friends();
 
 $content .= Utils::includeToVar('includes/modules/friend-request-button.php', array('user', 'viewer'));
 
