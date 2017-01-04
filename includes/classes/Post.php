@@ -36,6 +36,7 @@ class Post {
 	}
 
 	function html() {
+		global $CONF;
 		$user = $this->user;
 		$date = Utils::EpochToDateTime($this->datestamp);
 		$content = nl2br($this->post);
@@ -55,6 +56,11 @@ class Post {
 		<a href="#"><span class="glyphicon glyphicon-comment"></span> Comment</a> 
 		<a href="#"><span class="glyphicon glyphicon-share"></span> Share</a>
 	</div>
+HTML;
+		$post = $this;
+		$html .= Utils::includeToVar("{$CONF['dir']}includes/modules/comment-form.php", array('post'));
+		$html .= <<<HTML
+	<div class="post__comments"></div>
 </div>
 HTML;
 		return $html;
