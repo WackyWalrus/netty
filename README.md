@@ -8,3 +8,4 @@ So far it has:
 * Registering & logging in
 * Making posts
 * Liking posts
+* Requesting & accepting friend requests
