@@ -45,21 +45,7 @@ if (app === undefined) {
         }, 60000);
     }
 
-    function likePost(id) {
-
-    }
-
     function initEvents() {
-        /** textarea focus */
-        app.events.subscribe('post-status__textarea/focusin', function () {
-            cache.$textarea.addClass('focused');
-        });
-        /** textarea blur */
-        app.events.subscribe('post-status__textarea/focusout', function () {
-            if (cache.$textarea.val().length === 0) {
-                cache.$textarea.removeClass('focused');
-            }
-        });
         /** textarea keyup */
         app.events.subscribe('post-status__textarea/keyup', function () {
             cache.$textarea.height(1);
@@ -88,17 +74,10 @@ if (app === undefined) {
         });
         app.events.subscribe('feed/reload', loadFeed);
 
-        app.elems.$body.on('focus blur keyup', '.post-status textarea', function (e) {
-            if (e.keyCode === 13) {
-                app.events.publish('post-status__button/click');
-                return;
-            }
-            app.events.publish('post-status__textarea/' + e.type);
-        });
         app.elems.$body.on('click', '.post-status button', function (e) {
             app.events.publish('post-status__button/' + e.type);
         });
-        app.elems.$body.on('click', '.action-like', function(e) {
+        app.elems.$body.on('click', '.action-like', function (e) {
             e.preventDefault();
             var $link = $(this),
                 $num = $link.find('.num'),

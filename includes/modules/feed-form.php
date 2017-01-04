@@ -16,9 +16,11 @@ $form = <<<HTML
 <div class="post-status">
 	<form>
 		<div class="form-group">
-			<textarea placeholder="Post status..." class="form-control"></textarea>
+HTML;
+			$form .= Utils::includeToVar("{$CONF['dir']}includes/modules/comment-form.php");
+			$form .= <<<HTML
 		</div>
-		<input type="submit" value="Post" class="btn btn-default btn-success" />
+		<button type="button" class="btn btn-default btn-success">Post</button>
 	</form>
 </div>
 HTML;

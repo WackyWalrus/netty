@@ -81,10 +81,10 @@ body {
 .post-status {
 	margin: 20px 0;
 }
-.post-status textarea {
+textarea.fancy {
 	max-height: 35px;
 }
-.post-status textarea.focused {
+textarea.fancy.focused {
 	max-height: none;
 }
 

@@ -1,6 +1,6 @@
 <?php include 'includes/include.php';
 
-$js = array('events', 'feed');
+$js = array('events', 'feed', 'fancy-textarea', 'commentForm');
 $content = '';
 
 /**

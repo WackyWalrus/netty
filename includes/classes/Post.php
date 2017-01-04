@@ -53,13 +53,16 @@ class Post {
 	<div class="post__content">$content</div>
 	<div class="post__options">
 		<a href="#" class="action-like"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="num">$this->likes</span> Like<span class="s">$s</span></a> 
-		<a href="#"><span class="glyphicon glyphicon-comment"></span> Comment</a> 
+		<a href="#" class="action-comment"><span class="glyphicon glyphicon-comment"></span> Comment</a> 
 		<a href="#"><span class="glyphicon glyphicon-share"></span> Share</a>
 	</div>
+	<div class="post__comment-form hidden">
 HTML;
 		$post = $this;
 		$html .= Utils::includeToVar("{$CONF['dir']}includes/modules/comment-form.php", array('post'));
 		$html .= <<<HTML
+		<button type="button" class="btn btn-success comment-button">Comment</button>
+	</div>
 	<div class="post__comments"></div>
 </div>
 HTML;

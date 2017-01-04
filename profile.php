@@ -1,5 +1,5 @@
 <?php include 'includes/include.php';
-$js = array('events', 'feed', 'profile', 'friendButton');
+$js = array('events', 'feed', 'profile', 'friendButton', 'fancy-textarea');
 
 $username = str_replace('/', '', $_GET['username']);
 
