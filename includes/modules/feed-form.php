@@ -2,6 +2,16 @@
 	include_once '../include.php';
 }
 
+if (isset($_GET['user_id'])) {
+	$user = new User($_GET['user_id']);
+}
+
+if (isset($_GET['page'])) {
+	$page = $_GET['page'];
+} else {
+	$page = $_SERVER['SCRIPT_NAME'];
+}
+
 $form = <<<HTML
 <div class="post-status">
 	<form>
@@ -15,7 +25,9 @@ HTML;
 ?>
 
 <div class="module module-<?=rand();?>" data-module="feed-form">
-	<?php if($_SERVER['SCRIPT_NAME'] === '/profile.php') {
+	<input type="hidden" name="user_id" value="<?=$user->id;?>" />
+	<input type="hidden" name="page" value="<?=$page;?>" />
+	<?php if($page === '/profile.php') {
 		if ($user->id === $viewer->id) {
 			echo $form;
 		} else {
@@ -23,7 +35,7 @@ HTML;
 				echo $form;
 			}
 		}
-	} else if($_SERVER['SCRIPT_NAME'] === '/index.php') {
+	} else if($page === '/index.php') {
 		echo $form;
 	} ?>
 </div>

@@ -34,6 +34,30 @@ if ($action === 'request') {
 		return true;
 	}
 	return false;
+} else if ($action === 'accept') {
+	$f_id = $pdo->run("SELECT id FROM friendships WHERE user_a = :user_a AND user_b = :user_b LIMIT 1", array(
+		':user_a' => array(
+			'type' => 'int',
+			'val' => $id
+		),
+		':user_b' => array(
+			'type' => 'int',
+			'val' => $viewer->id
+		)
+	));
+
+	if (isset($f_id[0]['id'])) {
+		if (intval($f_id[0]['id'])) {
+			$pdo->run("UPDATE friendships SET active = 1 WHERE id = :id", array(
+				':id' => array(
+					'type' => 'int',
+					'val' => intval($f_id[0]['id'])
+				)
+			));
+
+			echo 'Request accepted!';
+		}
+	}
 } else {
 	$f_id = $pdo->run("SELECT id FROM friendships WHERE (user_a = :user_a1 AND user_b = :user_b1) OR (user_a = :user_a2 AND user_b = :user_b2) LIMIT 1", array(
 		':user_a1' => array(

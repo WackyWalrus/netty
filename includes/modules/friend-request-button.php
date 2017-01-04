@@ -16,7 +16,10 @@ if (isset($_GET['user_id'])) {
 		if (in_array($user->id, $viewer->pending)) { ?>
 			<button class="btn btn-default friend-btn">Pending Request</button>
 		<?php }
-		if (!in_array($user->id, $viewer->friends) && !in_array($user->id, $viewer->pending)) { ?>
+		if (in_array($user->id, $viewer->requests)) { ?>
+			<button class="btn btn-default friend-btn">Accept Request</button>
+		<?php }
+		if (!in_array($user->id, $viewer->friends) && !in_array($user->id, $viewer->pending) && !in_array($user->id, $viewer->requests)) { ?>
 			<button class="btn btn-default friend-btn">Add as Friend</button>
 		<?php }
 	} ?>

@@ -32,7 +32,7 @@ class Mysql {
 
 		$stmt->execute();
 
-		if (strpos($query, "DELETE") === 0) {
+		if (strpos($query, "SELECT") !== 0) {
 			return;
 		}
 

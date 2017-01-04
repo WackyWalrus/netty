@@ -74,6 +74,19 @@ if (app === undefined) {
         cache.overlay.$().on('click', '.friend-request', doRequest);
     }
 
+    function acceptRequest() {
+        function doAccept() {
+            friendAction('accept', function () {
+                cache.overlay.$().off('click', '.friend-accept', doAccept);
+                app.utils.refreshModule('friend-request-button', cache.moduleId, feedForm);
+            });
+        }
+
+        cache.overlay = app.utils.overlay("Accept this friend request?<br><button type='button' class='btn btn-success friend-accept'>Accept</button>");
+        cache.overlay.title("Accept Request");
+        cache.overlay.$().on('click', '.friend-accept', doAccept);
+    }
+
     function initEvents() {
         function friendButton_click_handler(e) {
             // get user ID
@@ -93,6 +106,8 @@ if (app === undefined) {
                     cancelRequest();
                 } else if (data === "send request") {
                     sendRequest();
+                } else if (data === "accept request") {
+                    acceptRequest();
                 } else {
                     console.log("something went wrong");
                 }

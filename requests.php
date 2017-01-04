@@ -2,7 +2,7 @@
 
 $title = "Requests";
 
-$js = array('events', 'feed');
+$js = array('events', 'feed', 'friendButton');
 $content = '';
 
 foreach($viewer->requests as $request) {
