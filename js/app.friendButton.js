@@ -39,8 +39,7 @@ if (app === undefined) {
         function doRemove() {
             friendAction('remove', function () {
                 cache.overlay.$().off('click', '.friend-remove', doRemove);
-                app.utils.refreshModule('friend-request-button', cache.moduleId);
-                feedForm();
+                app.utils.refreshModule('friend-request-button', cache.moduleId, feedForm);
             });
         }
 

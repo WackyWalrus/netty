@@ -50,7 +50,7 @@ if (app === undefined) {
             return false;
         },
 
-        refreshModule: function (module, id) {
+        refreshModule: function (module, id, cb) {
             cache.$module = app.elems.$body.find('[data-module=' + module + '].module-' + id);
             cache.data = {};
             cache.$module.find('input[type="hidden"]').each(function (i) {
@@ -62,6 +62,10 @@ if (app === undefined) {
                 'data': cache.data
             }).done(function (data) {
                 cache.$module.replaceWith(data);
+                if (cb !== undefined &&
+                        typeof cb === 'function') {
+                    cb();
+                }
             });
         }
     };
