@@ -4,7 +4,7 @@ if (app === undefined) {
     app = {};
 }
 
-(function(app, $){
+(function (app, $) {
 
     var cache = {};
 

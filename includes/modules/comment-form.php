@@ -1,7 +1,7 @@
 <?php
 
-if ((@include '../includes/include.php') === false) {
-	include '../include.php';
+if ((@include_once 'includes/include.php') === false) {
+	include_once '../include.php';
 }
 
 if (isset($post)) {

@@ -27,7 +27,9 @@ HTML;
 ?>
 
 <div class="module module-<?=rand();?>" data-module="feed-form">
-	<input type="hidden" name="user_id" value="<?=$user->id;?>" />
+	<?php if(isset($_GET['user_id'])) { ?>
+		<input type="hidden" name="user_id" value="<?=$user->id;?>" />
+	<?php } ?>
 	<input type="hidden" name="page" value="<?=$page;?>" />
 	<?php if($page === '/profile.php') {
 		if ($user->id === $viewer->id) {
