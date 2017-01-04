@@ -1,4 +1,5 @@
 <?php if ((@include_once 'includes/include.php') === false) {
+	echo 'test';
 	include_once '../include.php';
 }
 
