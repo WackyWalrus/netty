@@ -8,10 +8,6 @@ if (app === undefined) {
 
     var cache = {};
 
-    function initCache() {
-
-    }
-
     function initDOM() {
         app.elems.$body.find('.comment-button').each(function (i) {
             if ($(this).prev().find('textarea').val().length === 0) {
@@ -61,7 +57,6 @@ if (app === undefined) {
 
     app.commentForm = {
         init: function () {
-            initCache();
             initDOM();
             initEvents();
         }
