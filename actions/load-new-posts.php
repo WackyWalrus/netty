@@ -13,7 +13,7 @@ if ($_GET['page'] === 'newsfeed') {
 
 }
 
-if (isset($results)) {
+if (isset($results) && (is_array($results) | is_object($results))) {
 	foreach ($results as $result) {
 		$post = new Post($result['id']);
 		$user = $post->user;
