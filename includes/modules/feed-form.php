@@ -1,7 +1,4 @@
-<?php if ((@include_once 'includes/include.php') === false) {
-	echo 'test';
-	include_once '../include.php';
-}
+<?php include_once 'includes/include.php';
 
 if (isset($_GET['user_id'])) {
 	$user = new User($_GET['user_id']);
